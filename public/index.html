@@ -61,18 +61,18 @@
     </nav>
     <div class="container">
         <h1>Formulario de Notas</h1>
-        <form method="post" action="http://localhost:3000/recived" enctype="multipart/form-data">
+        <form method="POST" action="http://localhost:3000/save" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nombre-nota" class="form-label">Nombre de la Nota</label>
-                <input type="text" class="form-control" id="nombre-nota" placeholder="Ingresa el nombre de la nota">
+                <input type="text" class="form-control" id="nombre-nota" placeholder="Ingresa el nombre de la nota" name="nombre">
             </div>
             <div class="mb-3">
                 <label for="nota" class="form-label">Nota</label>
-                <textarea class="form-control" id="nota" rows="3" placeholder="Ingresa la nota"></textarea>
+                <textarea class="form-control" id="nota" rows="3" placeholder="Ingresa la nota" name="content"></textarea>
             </div>
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen</label>
-                <input type="file" class="form-control" id="imagen">
+                <input type="file" class="form-control" id="imagen" name="img">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
