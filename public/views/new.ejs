@@ -55,18 +55,24 @@
             </div>
         </div>
     </nav>
-    <h1>
-        Misión
-    </h1>
-    <p>
-        Nuestra misión es proporcionar una plataforma segura y confiable para que los usuarios puedan almacenar y organizar sus notas de manera efectiva. Nos esforzamos por brindar una experiencia fácil de usar y personalizable para satisfacer las necesidades individuales de cada usuario. Nos comprometemos a garantizar la privacidad y la seguridad de los datos de nuestros usuarios en todo momento.
-    </p> 
-    <h1>
-        Visión
-    </h1>
-    <p>
-        Nuestra visión es convertirnos en la principal plataforma de almacenamiento de notas en línea para usuarios de todo el mundo. Buscamos ser reconocidos por nuestra facilidad de uso, seguridad y capacidad para adaptarnos a las necesidades de nuestros usuarios. Nos esforzamos por innovar constantemente y mantenernos a la vanguardia de las tecnologías emergentes para ofrecer la mejor experiencia posible a nuestros usuarios.
-    </p>
+    <div class="container">
+        <h1>Formulario de Notas</h1>
+        <form method="POST" action="http://localhost:3000/note-save" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombre-nota" class="form-label">Nombre de la Nota</label>
+                <input type="text" class="form-control" id="nombre-nota" placeholder="Ingresa el nombre de la nota" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="nota" class="form-label">Nota</label>
+                <textarea class="form-control" id="nota" rows="3" placeholder="Ingresa la nota" name="content"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imagen" name="img">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
 </body>
 
 </html>

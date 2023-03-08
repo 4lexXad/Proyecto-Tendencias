@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const Note = require('./app/models/Note');
+const Note = require('./app/Models/Note');
 
 mongoose.connect('mongodb://root:admin@localhost:27017/test?authSource=admin')
   .then(() => {
@@ -29,7 +29,7 @@ mongoose.connect('mongodb://root:admin@localhost:27017/test?authSource=admin')
 app.set('view engine', 'ejs');
 app.use('/', express.static('public'));
 
-app.post('/save', upload.single('img'), async (req, res) => {
+app.post('/note-save', [upload.single('img')], async (req, res) => {
     const nombre = req.body.nombre;
     const content = req.body.content;
     const img = req.file.filename;  
@@ -50,7 +50,7 @@ app.post('/save', upload.single('img'), async (req, res) => {
         console.log('Error al guardar la nota', err);
       });
 
-    return res.redirect('/notes-list');
+    return res.redirect('/note-ls');
 });
 
 app.get('/notes', async (req, res) => {
@@ -58,21 +58,25 @@ app.get('/notes', async (req, res) => {
   return res.send(notes);
 })
 
-app.get('/notes-list', async (req, res) => {
+app.get('/note-new', async (req, res) => {
+  res.render(path.join(__dirname, 'public', 'views', 'new.ejs'));
+})
+
+app.get('/note-ls', async (req, res) => {
   const notes = await Note.find();
   res.render(path.join(__dirname, 'public', 'views', 'notes.ejs'), { notas: notes });
 })
 
-app.get('/notes/:id', async (req, res) => {
-  const id = req.params.id;
-  const note = await Note.findById(id);
-  return res.send(note);
+app.post('/note-search', async (req, res) => {
+  const name = req.params.name;
+  const notes = await Note.find({ "note_name": name });
+  return res.send(notes);
 });
 
 app.get('/notes-d/:id', async (req, res) => {
   const id = req.params.id;
   await Note.findByIdAndDelete(id);
-  return res.redirect('/notes-list');
+  return res.redirect('/note-ls');
 });
 
 app.listen(port, () => {
