@@ -8,4 +8,4 @@ WORKDIR /home/Proyecto-tendencias
 
 EXPOSE 3000
 
-CMD node index.js
+CMD node test.js
