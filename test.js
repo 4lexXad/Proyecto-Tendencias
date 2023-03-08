@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 
 const Note = require('./app/Models/Note');
 
-mongoose.connect('mongodb://root:admin@localhost:27017/test?authSource=admin')
+mongoose.connect('mongodb://root:admin@mongo:27017/test?authSource=admin')
   .then(() => {
     console.log('Conectado a MongoDB');
   })

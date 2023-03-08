@@ -1,11 +1,11 @@
 const Mongo = require('mongoose');
 
 const db = {
-    host: 'localhost',
-    port: 27017,
-    user: 'root',
-    password: 'admin',
-    database: 'test'
+    host: '',
+    port: 3306,
+    user: '',
+    password: '',
+    database: ''
 }
 
 Mongo.connect(`mongodb://${db.user}:${db.password}@${db.host}:${db.port}/${db.database}?authSource=admin`)

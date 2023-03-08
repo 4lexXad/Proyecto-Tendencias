@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const table = {
-    name: 'Note-test'
+    name: 'Note'
 }
 
 const notaSchema = new mongoose.Schema({
