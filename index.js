@@ -1,15 +1,13 @@
-// const express = require('express');
-// const autoloader = require('./Autoload');
+const express = require('express');
+const autoloader = require('./Autoload');
 
-// const port = 3000;
-// const app = express();
+const port = 3000;
+const app = express();
 
-// autoloader(app, __dirname + '/app');
-// autoloader(app, __dirname + '/app/Database');
+autoloader(app, __dirname + '/app');
 
+app.set('view engine', 'ejs');
 
-// app.set('view engine', 'ejs');
-
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`)
-// })
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
