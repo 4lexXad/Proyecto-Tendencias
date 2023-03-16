@@ -1,11 +1,11 @@
 FROM node:18
 
-RUN mkdir -p /home/Proyecto-tendencias
+RUN mkdir -p .
 
-COPY . /home/Proyecto-tendencias
+COPY . .
 
-WORKDIR /home/Proyecto-tendencias
+WORKDIR .
 
 EXPOSE 3000
 
-CMD node test.js
+CMD node index.js

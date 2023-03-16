@@ -13,20 +13,7 @@ const notaSchema = {
 class Note extends Model {
     constructor() {
         super(table.name, notaSchema);
-        this.note = this.model();
-    }
-
-    async allData() {
-        return this.note.find();
-    }
-
-    async save(data) {
-        const noteSave = new this.note(data);
-        await noteSave.save();
-    }
-
-    async delete(id) {
-        await this.note.findByIdAndDelete(id);
+        this.Model = this.model();
     }
 }
 

@@ -17,65 +17,69 @@
     <title>List Ideas</title>
 </head>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-      <a class="navbar-brand" href="#">List Ideas</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/note-ls">List</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/note-new">New</a>
-              </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      Social
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="https://github.com/4lexXad">Git Hub</a></li>
-                      <li><a class="dropdown-item" href="https://www.tiktok.com/@4lejandroxavier">TikTok</a></li>
-                      <li><a class="dropdown-item" href="https://www.facebook.com/4lejandr">Facebook</a></li>
-                  </ul>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link disabled">More Proyects</a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</nav>
-  <body>
-    <div class="container">
-      <h1>Lista de notas</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Contenido</th>
-            <th scope="col">Imagen</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(var i = 0; i < notas.length; i++) { %>
-          <tr>
-            <td><%= notas[i].note_name %></td>
-            <td><%= notas[i].note_content %></td>
-            <td><img src="<%= notas[i].note_img %>"></td>
-            <td><a class="btn btn-danger" href="notes-d/<%= notas[i]._id %>" >Eliminar</a></td>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">List Ideas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/note-ls">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/note-new">New</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Social
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://github.com/4lexXad">Git Hub</a></li>
+                        <li><a class="dropdown-item" href="https://www.tiktok.com/@4lejandroxavier">TikTok</a></li>
+                        <li><a class="dropdown-item" href="https://www.facebook.com/4lejandroXavier">Facebook</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">More Proyects</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
-  </body>
+</nav>
+
+<body>
+    <div class="container">
+        <h1>Lista de notas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Contenido</th>
+                    <th scope="col">Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < notas.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= notas[i].note_name %>
+                        </td>
+                        <td>
+                            <%= notas[i].note_content %>
+                        </td>
+                        <td><img src="<%= notas[i].note_img %>"></td>
+                        <td><a class="btn btn-danger" href="notes-d/<%= notas[i]._id %>">Eliminar</a></td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
 </html>

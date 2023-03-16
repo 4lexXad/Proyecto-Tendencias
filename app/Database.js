@@ -1,7 +1,7 @@
 const Mongo = require('mongoose');
 
 const db = {
-    host: 'localhost',
+    host: 'mongo',
     port: 27017,
     user: 'root',
     password: 'admin',
