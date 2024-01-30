@@ -1,14 +1,12 @@
 const Mongo = require('mongoose');
 
 const db = {
-    host: 'mongo',
-    port: 27017,
-    user: 'root',
-    password: 'admin',
-    database: 'test'
+    host: 'atlascluster.9hcf2ue.mongodb.net',
+    user: encodeURIComponent('root'),
+    password: encodeURIComponent('lXz2DijglaY7FIGO')
 }
 
-Mongo.connect(`mongodb://${db.user}:${db.password}@${db.host}:${db.port}/${db.database}?authSource=admin`)
+Mongo.connect(`mongodb+srv://${db.user}:${db.password}@${db.host}/?retryWrites=true&w=majority`)
     .then(() => {
         console.log('Connected to MongoDB');
     })

@@ -1,9 +1,9 @@
 const path = require('path');
 
-const Controller = {
-    View: function (view) {
+class BaseController {
+    View (view) {
         return path.join(__dirname, '../../', 'public' ,'views', view);
     }
 }
 
-module.exports = Controller;
+module.exports = BaseController;

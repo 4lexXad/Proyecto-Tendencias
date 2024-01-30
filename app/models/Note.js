@@ -1,21 +1,19 @@
 const Model = require('./Model');
 
-const table = {
-    name: 'Note'
+const dataTable = {
+    name: 'Nota',
+    schema: {
+        note_name: { type: String, required: true },
+        note_content: { type: String, required: true},
+        note_img: { type: String, required: true}
+    }
 }
-
-const notaSchema = {
-    note_name: { type: String, required: true },
-    note_content: { type: String, required: true },
-    note_img: { type: String, required: true },
-};
 
 class Note extends Model {
     constructor() {
-        super(table.name, notaSchema);
+        super(dataTable);
         this.Model = this.model();
     }
 }
 
-const note = new Note ();
-module.exports = note;
+module.exports = new Note().model();

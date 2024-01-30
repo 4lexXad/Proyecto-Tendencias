@@ -1,17 +1,18 @@
 const Note = require("../Models/Note");
-const Ctr = require("./Controller");
+const BaseController = require('./BaseController');
 
-class NoteController {
-    constructor () {
-    }
+class NoteController extends BaseController {
+
 
     async ls (req, res) {
-        const notes = await Note.allData();
-        res.render(Ctr.View('notes.ejs'), { notas: notes });
+        const notas = await Note.find();
+        const content = super.View('notes.ejs')
+        
+        res.render(super.View('layout/main.ejs'), { content, notas });
     }
 
     new (req, res) {
-        res.render(Ctr.View('new.ejs'));
+        res.render(super.View('new.ejs'));
     }
 
     async save (req, res) {  
@@ -21,17 +22,16 @@ class NoteController {
             note_img: 'uploads/' + req.file.filename
         }
         
-        await Note.save(data);
+        await new Note(data).save();
 
         return res.redirect('/note-ls');
     }
 
     async delete (req, res) {
         const id = req.params.id;
-        await Note.delete(id);
+        await Note.findByIdAndDelete(id);
         return res.redirect('/note-ls');
     }
 }
 
-const note = new NoteController ();
-module.exports = note;
+module.exports = new NoteController ();

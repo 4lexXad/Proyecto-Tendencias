@@ -1,25 +1,13 @@
 const mongoose = require('mongoose');
 
 class Model {
-    constructor(name, notaSchema) {
-        this.name = name;
-        this.notaSchema = new mongoose.Schema(notaSchema);
+    constructor(table) {
+        this.name = table.name;
+        this.schema = new mongoose.Schema(table.schema);
     }
 
     model() {
-        return mongoose.model(this.name, this.notaSchema)
-    }
-
-    async allData() {
-        return this.Model.find();
-    }
-
-    async save(data) {
-        await new this.Model(data).save();
-    }
-
-    async delete(id) {
-        await this.Model.findByIdAndDelete(id);
+        return mongoose.model(this.name, this.schema)
     }
 }
 
