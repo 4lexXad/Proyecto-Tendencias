@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <form action="/register-save" method="post">
+        <div class="input-group mb-3">
+            <div class="form-floating">
+                <input type="text" name="NOMBRE" id="NOMBRE" class="form-control" placeholder=" " required>
+                <label for="NOMBRE">Nombres</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" name="APELLIDO" id="APELLIDO" class="form-control" placeholder=" " required>
+                <label for="APELLIDO">Apellidos</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="form-floating">
+                <input type="email" name="EMAIL" id="EMAIL" class="form-control" placeholder=" " required>
+                <label for="EMAIL">Email</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="form-floating">
+                <input type="password" name="CLAVE_1" id="CLAVE_1" class="form-control" placeholder=" " required>
+                <label for="CLAVE_1">Clave</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" name="CLAVE_2" id="CLAVE_2" class="form-control" placeholder=" " required>
+                <label for="CLAVE_2">Confirmar clave</label>
+            </div>
+        </div>
+
+        <input type="submit" value="Guardar" class="btn btn-primary">
+    </form>
+</div>

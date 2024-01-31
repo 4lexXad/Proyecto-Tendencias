@@ -1,0 +1,44 @@
+.marcos {
+    padding: 10px;
+    margin: 5px auto;
+    border: 1px solid black;
+    width: 95%; /* Puedes ajustar este valor según tus necesidades */
+}
+.btncrd {
+	background-color: burlywood;
+	color: white;
+	padding: 0.2rem 1rem;
+	border-radius: 1rem;
+	font-weight: 700;
+	border: 0.1rem solid;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 6px;
+	margin-bottom: -26px;
+}
+img{
+	border-radius: 1rem;
+}
+body{
+	background-color: blueviolet;
+}
+.brdscrsl {
+	width: 80%; /* Puedes ajustar este valor según tus necesidades */
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 30px;
+	margin-bottom: 50px;
+	margin-right: -100px;
+  }
+  .carousel-item img {
+	width: 100%;  /* Ajusta el ancho al 100% del contenedor */
+	height: auto; /* Mantiene la proporción de la imagen */
+}
+.dscrpcn{
+	margin-top: 30px;
+	margin-left: -150px;
+	margin-right: -90px;
+	padding: 10px;
+}

@@ -1,0 +1,142 @@
+<div class="container mt-5">
+    <h1>Bienestar</h1>
+    <% if (user.nombres !==null) { %>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <h3><%- user.nombres %> <%- user.apellidos %></h3>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                ¿C&oacute;mo te est&aacute; yendo?
+            </div>
+
+            <form action="/welfare-save" method="post" class=" card-body mb-3" enctype="multipart/form-data">
+
+                <div class="form-floating mb-3">
+                    <input type="text" name="TITULO" id="TITULO" class="form-control" placeholder=" " required>
+                    <label for="TITULO">T&iacute;tulo</label>
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <div class="form-floating">
+                        <select name="ACTIVIDAD" id="ACTIVIDAD" class="form-control">
+                            <option value="0">Existir :)</option>
+                            <option value="1">Levantarse y despertarse</option>
+                            <option value="2">Higiene personal</option>
+                            <option value="3">Vestirse</option>
+                            <option value="4">Desayunar</option>
+                            <option value="5">Trabajar o ir a la escuela</option>
+                            <option value="7">Descansos y almuerzo</option>
+                            <option value="8">Ejercicio físico</option>
+                            <option value="9">Hacer compras o realizar tareas</option>
+                            <option value="10">Actividades recreativas</option>
+                            <option value="11">Trabajo o tareas adicionales</option>
+                            <option value="12">Cena</option>
+                            <option value="13">Relajarse</option>
+                            <option value="14">Prepararse para dormir</option>
+                            <option value="15">Dormir</option>
+                        </select>
+                        <label for="ACTIVIDAD">Actividad</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="number" max="10" min="0" name="CALIFICACION" id="CALIFICACION" class="form-control"
+                            placeholder=" " required>
+                        <label for="CALIFICACION">0 - 10</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="file" name="IMAGEN" id="IMAGEN" class="form-control">
+                        <label for="IMAGEN">Imagen</label>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea name="DESCRIPCION" id="DESCRIPCION" cols="30" rows="10" class="form-control"
+                        placeholder=" " required></textarea>
+                    <label for="DESCRIPCION">Descripci&oacute;n</label>
+                </div>
+
+
+                <input type="submit" value="Guardar" class="btn btn-success">
+            </form>
+        </div>
+
+        <script>
+            const actividades = []
+        </script>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+            <% user.actividades.forEach(a=>{%>
+                <script>
+                    actividades.push({
+                        titulo: '<%- a.titulo %>',
+                        x: '<%- a.fecha.toISOString().split(`T`)[0]; %>',
+                        descripcion: '<%- a.descripcion %>',
+                        y: '<%- a.calificacion %>',
+                        actividad: '<%- a.actividad %>',
+                    })
+                </script>
+
+                <div class="col-md-5 col-lg-4 mb-3">
+                    <div class="card w-75" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/image/<%- a.id %>" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%- a.titulo %></h5>
+                                    <p class="card-text"><%- a.descripcion %></p>
+                                    <p class="card-text"><small class="text-body-secondary"><%- a.fecha %></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <%}) %>
+
+        </div>
+
+
+        <canvas id="miGrafico"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            window.onload = () => {
+
+                const config = {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            data: actividades
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Gráfica de emociones'
+                            }
+                        }
+                    },
+                };
+
+                console.log(actividades);
+                const myChart = new Chart(document.getElementById('miGrafico'), config);
+            }
+        </script>
+
+
+        <% } else { %>
+            <p>Por favor inicia sesi&oacute;n para continuar</p>
+            <% } %>
+</div>
