@@ -16,6 +16,7 @@ class Model {
                     resolve([])
                 } else {
                     console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
+                    console.log(results);
                     resolve(Object.values(results))
                 }
             })
@@ -37,6 +38,7 @@ class Model {
                     if (Object.values(results).length == 0) {
                         resolve([])
                     } else {
+                        console.log(results);
                         resolve(Object.values(results))
                     }
                 }
@@ -58,6 +60,28 @@ class Model {
                 } else {
                     console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
                     resolve(true)
+                }
+            })
+        })
+    }
+
+    async join(tableName, condition, where) {
+        let keys = Object.keys(where);
+        return new Promise((resolve, reject) => {
+            let query = `SELECT * FROM ${this.name} INNER JOIN ${tableName} ON ${condition[0]} = ${condition[1]} WHERE ${keys.map(key => `${key} = ${conn.escape(where[key])}`).join(' AND ')}`
+
+            conn.query(query, (err, results, fields) => {
+                if (err) {
+                    console.log('Query:', query, 'status', '\x1b[31m', 'ERROR', '\x1b[0m');
+                    //console.log('Error al insertar');
+                    resolve([])
+                } else {
+                    console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
+                    if (Object.values(results).length == 0) {
+                        resolve([])
+                    } else {
+                        resolve(Object.values(results))
+                    }
                 }
             })
         })

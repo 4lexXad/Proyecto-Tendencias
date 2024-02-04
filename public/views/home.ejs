@@ -1,55 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-    <div class="lava-lamp"></div>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/style-styles.css">
-    <title>inicio</title>
-</head>
-<body>
-    <div id="navbarContainer"></div>
-    <!--Inicio-->
-    <div class="content">
-<div class="bootcamp-section">
-    <div class="bootcamp-description">
-        <p>Sumérgete en el mundo de la programación con nuestro bootcamp. Aprende habilidades prácticas, trabaja en proyectos emocionantes y avanza en tu carrera.</p>
-    </div>
-    <div class="bootcamp-images">
-        <img src="public/img-imagen1.jpeg" alt="Imagen del bootcamp">
+<div class="container mt-4">
+    <div class="row">
+        <!-- Card 1 -->
+        <% habitaciones.forEach(h => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="public/img-img2.png" class="card-img-top" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%- h.titulo %></h5>
+                        <p class="card-text">
+                            <%- h.descripcion %>
+                        </p>
+                        <a href="/habitacion/<%- h.id %>" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>     
+        <% }); %>
+        
     </div>
 </div>
-<div class="br-line"></div>
-<div class="bootcamp-section">
-    <div class="bootcamp-images">
-        <img src="public/img-imagen2.jpg" alt="Imagen del bootcamp">
-    </div>
 
-    <div class="bootcamp-description">
-        <p>Explora nuevas tecnologías y enriquece tu conjunto de habilidades con la guía de instructores expertos en el campo.</p>
-    </div>
-</div>
-<div class="br-line"></div>
-<div class="bootcamp-section">
-    <div class="bootcamp-description">
-        <p>Aprende las últimas tendencias en desarrollo web y construye aplicaciones increíbles.</p>
-    </div>
-    <div class="bootcamp-images">
-        <img src="public/img-imagen3.jpeg" alt="Imagen del bootcamp 3">
-    </div>
-</div>
-<div class="br-line"></div>
-<div class="bootcamp-section">
-    <div class="bootcamp-images">
-        <img src="public/img-imagen4.jpeg" alt="Imagen del bootcamp 4">
-    </div>
-
-    <div class="bootcamp-description">
-        <p>Sumérgete en la inteligencia artificial y transforma tus ideas en soluciones innovadoras.</p>
-    </div>
-</div>
-<!--Final-->
-    <script src="public/script-script.js"></script>
-    <script src="public/script-navbar.js"></script>
-</body>
-</html>
+<script src="public/script-bootstrap.bundle.min.js"></script>
+<script src="public/script-popper.min.js"></script>

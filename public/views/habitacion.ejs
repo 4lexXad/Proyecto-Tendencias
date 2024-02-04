@@ -1,0 +1,61 @@
+
+<div class="row">
+    <div class="col-8">
+        <div id="carouselExample" class="brdscrsl carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% images.forEach(img => { %>
+
+                <div class="carousel-item active">
+                    <img src="/imagen/<%- img.id %>" class="d-block mx-auto" alt="Primer slide">
+                </div>
+
+              <% }); %>
+              
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>    
+    </div>
+    <div class="col-3">
+        <div class="dscrpcn card">
+           <div><%- data[0].descripcion %></div>
+           <div> <a href="/reserva/<%- data[0].id %>" class="btncrd">Ver más</a></div>
+        </div>
+    </div>
+</div>
+
+  <script>
+    var itemsPerSlide = 3;
+    var totalItems = $('.carousel-item').length;
+    var slide = 0;
+  
+    // Asegúrate de tener cargado Bootstrap y sus dependencias antes de ejecutar este script.
+    $('#carouselExample').carousel({
+      interval: false, // Desactiva la transición automática para que el carrusel sea infinito
+    });
+  
+    $('#carouselExample .carousel-item').each(function () {
+      var minPerSlide = itemsPerSlide;
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+  
+      for (var i = 0; i < minPerSlide; i++) {
+        next = next.next();
+        if (!next.length) {
+          next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+      }
+    });
+  </script>
+      <script src="public/script-bootstrap.bundle.min.js"></script>
+      <script src="public/script-popper.min.js"></script>

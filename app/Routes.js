@@ -13,16 +13,8 @@ Routes.use(express.urlencoded({ extended: true }))
 
 Routes.get('/Home', Controller('Welcome').index);
 
-Routes.get('/Contacto', Controller('Contacto').index);
 
-Routes.get('/Cursos', Controller('Cursos').index);
-Routes.get('/image/:id', Controller('Cursos').getImage);
-
-Routes.get('/Login', Controller('Session').index);
-
-
-
-Routes.get('/public/:path', public);
+Routes.use('/public/:path', public);
 Routes.use('/', express.static('public'));
 module.exports = Routes;
 

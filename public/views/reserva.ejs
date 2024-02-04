@@ -1,0 +1,46 @@
+<form class="marcos" method="post" action="/reserva-save">
+    <div class="container mt-12">
+        <div class="border-bottom border-1 border-gray-100 pb-12">
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Informacion de Registro</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">Después de llenar tus datos se te contactará para validar los mismos</p>
+
+            <div class="mt-10 row g-3">
+                <div class="col-sm-6">
+                    <label for="first-name" class="form-label text-sm font-medium text-gray-900">Nombre</label>
+                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                        class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <label for="last-name" class="form-label text-sm font-medium text-gray-900">Apellido</label>
+                    <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                        class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label text-sm font-medium text-gray-900">Correo Electrónico</label>
+                    <input id="email" name="email" type="email" autocomplete="email"
+                        class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="street-address" class="form-label text-sm font-medium text-gray-900">Dirección Relativa</label>
+                    <input type="text" name="street-address" id="street-address" autocomplete="street-address"
+                        class="form-control">
+                </div>
+                <div class="col-sm-4">
+                    <label for="phone" class="form-label text-sm font-medium text-gray-900">Número de Teléfono</label>
+                    <input class="form-control" type="tel" id="phone" name="phone">
+                </div>
+                <div class="col-sm-4">
+                    <label for="date" class="form-label text-sm font-medium text-gray-900">Fecha</label>
+                    <input type="date" name="date" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <label for="time" class="form-label text-sm font-medium text-gray-900">Hora</label>
+                    <input type="time" name="time" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-success">
+</form>
+<script src="public/script-bootstrap.bundle.min.js"></script>
+<script src="public/script-popper.min.js"></script>    
