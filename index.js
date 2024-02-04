@@ -9,5 +9,5 @@ autoloader(app, __dirname + '/app');
 app.set('view engine', 'ejs');
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log('Proyect listening link', '\x1b[1m', `http://localhost:${port}/Home`, '\x1b[0m')
 })

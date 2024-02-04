@@ -1,13 +1,11 @@
 const BaseController = require('./BaseController');
-const Model = require('../models/Example')
 
 class WelcomeController extends BaseController {
 
     async index (req, res) {
-        res.render(super.main(), { 
+        res.render(super.layout(), { 
             title: 'Home',
-            content: super.View('hotel'),
-            //data: await Model.find()
+            content: super.View('home')
         })
     }
 }

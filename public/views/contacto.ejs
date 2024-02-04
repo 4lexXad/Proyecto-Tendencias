@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/style-styles.css">
+    <title>Contactanos</title>
+</head>
+<body>
+    <div id="navbarContainer"></div>
+    <div class="contact-container">
+        <h1>Contactanos</h1>
+        <form id="contactForm">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="button" onclick="submitForm()">Enviar Mensaje</button>
+        </form>
+        <div id="successMessage"></div>
+    </div>
+
+    <script src="public/script-script.js"></script>
+    <script src="public/script-navbar.js"></script>
+</body>
+</html>

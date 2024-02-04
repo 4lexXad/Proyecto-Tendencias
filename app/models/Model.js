@@ -1,4 +1,3 @@
-const mysql = require('mysql2');
 const conn = require('../Database');
 
 class Model {
@@ -9,29 +8,34 @@ class Model {
 
     async find () {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT * FROM ${this.name}`, (err, results, fields) => {
+            let query = `SELECT * FROM ${this.name}`;
+            conn.query(query, (err, results, fields) => {
                 if (err) {
-                    console.log('Error en la consulta: ', err);
+                    //console.log('Error en la consulta: ', err);
+                    console.log('Query:', query, 'status', '\x1b[31m', 'ERROR', '\x1b[0m');
                     resolve([])
                 } else {
+                    console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
                     resolve(Object.values(results))
                 }
             })
         })
     }
 
-    async fidnWhere(data) {
+    async where(data) {
         const keys = Object.keys(data);
-        const value = Object.values(data).map(value => conn.escape(value));
 
         return new Promise ((resolve, reject) => {
-            conn.query(`SELECT * FROM ${this.name} WHERE ${keys.map(key => `${key} = ${conn.escape(data[key])}`).join(' AND ')}`, (err, results, fields) => {
+            let query = `SELECT * FROM ${this.name} WHERE ${keys.map(key => `${key} = ${conn.escape(data[key])}`).join(' AND ')}`
+            conn.query(query, (err, results, fields) => {
                 if (err) {
-                    console.log('Error en la consulta ' + err);
+                    //console.log('Error en la consulta ' + err);
+                    console.log('Query:', query, 'status', '\x1b[31m', 'ERROR', '\x1b[0m');
                     resolve([])
                 } else {
+                    console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
                     if (Object.values(results).length == 0) {
-                        resolve(false)
+                        resolve([])
                     } else {
                         resolve(Object.values(results))
                     }
@@ -45,11 +49,14 @@ class Model {
         const values = Object.values(data).map(value => conn.escape(value));
 
         return new Promise((resolve, reject) => {
-            conn.query(`INSERT INTO ${this.name} (${keys.join(', ')}) VALUES (${values.join(', ')})`, (err, results, fields) => {
+            let query = `INSERT INTO ${this.name} (${keys.join(', ')}) VALUES (${values.join(', ')})`;
+            conn.query(query, (err, results, fields) => {
                 if (err) {
-                    console.log('Error al insertar');
+                    console.log('Query:', query, 'status', '\x1b[31m', 'ERROR', '\x1b[0m');
+                    //console.log('Error al insertar');
                     resolve(false)
                 } else {
+                    console.log('Query:', query, 'status', '\x1b[1m', '200', '\x1b[0m');
                     resolve(true)
                 }
             })

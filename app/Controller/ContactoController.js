@@ -5,9 +5,9 @@ class ResourcesController extends BaseController {
     async index(req, res) {
 
         
-        res.render(super.main(), {
-            title: 'Recursos Educativos',
-            content: super.View('resources/list'),
+        res.render(super.layout(), {
+            title: 'Contactanos',
+            content: super.View('contacto'),
         });
     }
 }
